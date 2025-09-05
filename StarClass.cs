@@ -1,38 +1,260 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace c_1
 {
     internal class StarClass
     {
+        static bool IsValidName(string name)
+        {
+            return Regex.IsMatch(name, @"^[a-zA-ZäöüõÄÖÜÕ\s-]+$");
+        }
+
         public static void Main(string[] args)
         {
-            Console.OutputEncoding = Encoding.UTF8;
-            Console.ForegroundColor = ConsoleColor.Green;
+            // ÜLESANNE 1
+            Console.WriteLine("=== ÜLESANNE 1 ===");
+            try
+            {
+                Console.Write("Mis on sinu nimi? ");
+                string Nimi = Console.ReadLine();
 
-            Console.Write("Tere tulemast!, \nInput Text: ");
-            string tekst = Console.ReadLine();
-            Console.WriteLine($"{tekst}, Rõõm Näha");
-            int a = 1000;
-            char taht = 'A';
-            Console.Write($"Esimene arv on {a}, Sisesta b = ... ");
-            int b = int.Parse(Console.ReadLine());
-            Console.WriteLine($"Summa = {a+b}");
-            Console.WriteLine("Ujukomaarv");
-            double d=double.Parse(Console.ReadLine());
-            Console.WriteLine(d);
-            float f=float.Parse(Console.ReadLine());
-            Console.WriteLine(f);
-            bool t = true;
+                if (!IsValidName(Nimi))
+                {
+                    Console.WriteLine("Viga: nimi võib sisaldada ainult tähti.");
+                }
+                else if (Nimi.ToLower() == "juku")
+                {
+                    Console.WriteLine("Tere tulemast tagasi, Juku! Kui vana sa oled?");
+                    string vanusSisend = Console.ReadLine();
+                    if (!int.TryParse(vanusSisend, out int vanus))
+                    {
+                        Console.WriteLine("Viga: vanus peab olema täisarv.");
+                    }
+                    else
+                    {
+                        string hind = Funktsioonid.Hind(vanus);
+                        Console.WriteLine($"Sinu piletihind on: {hind}");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine($"Tere tulemast, {Nimi}!");
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Viga: {e.Message}");
+            }
 
-            Random rnd = new Random();
-            a = rnd.Next(-10, 10);
-            Console.WriteLine(a);
-            float vastus = funktsioonid.kalkulaator(f, a);
-            Console.Write($"vastus: {vastus}");
+            // ÜLESANNE 2
+            Console.WriteLine("=== ÜLESANNE 2 ===");
+            try
+            {
+                Console.Write("Sisesta esimese inimese nimi: ");
+                string nimi1 = Console.ReadLine();
+                Console.Write("Sisesta teise inimese nimi: ");
+                string nimi2 = Console.ReadLine();
+
+                if (!IsValidName(nimi1) || !IsValidName(nimi2))
+                {
+                    Console.WriteLine("Viga: nimed võivad sisaldada ainult tähti.");
+                }
+                else
+                {
+                    Console.WriteLine($"{nimi1} ja {nimi2} on täna pinginaabrid.");
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Viga: {e.Message}");
+            }
+
+            // ÜLESANNE 3
+            Console.WriteLine("=== ÜLESANNE 3 ===");
+            try
+            {
+                Console.Write("Sisesta toa pikkus (m): ");
+                string pikkusSisend = Console.ReadLine();
+                Console.Write("Sisesta toa laius (m): ");
+                string laiusSisend = Console.ReadLine();
+
+                if (!double.TryParse(pikkusSisend, out double pikkus) || pikkus <= 0)
+                {
+                    Console.WriteLine("Viga: toa pikkus peab olema positiivne number.");
+                }
+                else if (!double.TryParse(laiusSisend, out double laius) || laius <= 0)
+                {
+                    Console.WriteLine("Viga: toa laius peab olema positiivne number.");
+                }
+                else
+                {
+                    double pindala = pikkus * laius;
+                    Console.WriteLine($"Põranda pindala on: {pindala} ruutmeetrit.");
+
+                    Console.Write("Kas soovid teha remonti? (jah/ei): ");
+                    string remontVastus = Console.ReadLine().ToLower();
+
+                    if (remontVastus == "jah")
+                    {
+                        Console.Write("Kui palju maksab ruutmeeter? ");
+                        string ruutmeeterHindSisend = Console.ReadLine();
+
+                        if (!double.TryParse(ruutmeeterHindSisend, out double ruutmeeterHind) || ruutmeeterHind < 0)
+                        {
+                            Console.WriteLine("Viga: ruutmeetri hind peab olema positiivne number.");
+                        }
+                        else
+                        {
+                            double remontHind = ruutmeeterHind * pindala;
+                            Console.WriteLine($"Põranda vahetamise hind on: {remontHind}.");
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Viga: {e.Message}");
+            }
+
+            // ÜLESANNE 4
+            Console.WriteLine("=== ÜLESANNE 4 ===");
+            try
+            {
+                Console.Write("Sisesta hind 30% allahindlusega: ");
+                string hindSisend = Console.ReadLine();
+
+                if (!double.TryParse(hindSisend, out double allahindlusHind) || allahindlusHind < 0)
+                {
+                    Console.WriteLine("Viga: hind peab olema positiivne number.");
+                }
+                else
+                {
+                    double algHind = allahindlusHind / 0.7;
+                    Console.WriteLine($"Algne hind oli: {algHind:F2}");
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Viga: {e.Message}");
+            }
+
+            // ÜLESANNE 5
+            Console.WriteLine("=== ÜLESANNE 5 ===");
+            try
+            {
+                Console.Write("Sisesta temperatuur (°C): ");
+                string tempSisend = Console.ReadLine();
+
+                if (!double.TryParse(tempSisend, out double temperatuur))
+                {
+                    Console.WriteLine("Viga: temperatuur peab olema arv.");
+                }
+                else
+                {
+                    if (temperatuur > 18)
+                        Console.WriteLine("Temperatuur on üle 18 kraadi, soovitav toasoojus talvel.");
+                    else
+                        Console.WriteLine("Temperatuur on alla 18 kraadi.");
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Viga: {e.Message}");
+            }
+
+            // ÜLESANNE 6
+            Console.WriteLine("=== ÜLESANNE 6 ===");
+            try
+            {
+                Console.Write("Sisesta inimese pikkus (cm): ");
+                string pikkusSisend = Console.ReadLine();
+
+                if (!int.TryParse(pikkusSisend, out int pikkusInimene) || pikkusInimene <= 0)
+                {
+                    Console.WriteLine("Viga: pikkus peab olema positiivne täisarv.");
+                }
+                else
+                {
+                    if (pikkusInimene < 150)
+                        Console.WriteLine("Sa oled lühike.");
+                    else if (pikkusInimene <= 180)
+                        Console.WriteLine("Sa oled keskmise pikkusega.");
+                    else
+                        Console.WriteLine("Sa oled pikk.");
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Viga: {e.Message}");
+            }
+
+            // ÜLESANNE 7
+            Console.WriteLine("=== ÜLESANNE 7 ===");
+            try
+            {
+                Console.Write("Sisesta inimese pikkus (cm): ");
+                string pikkus2Sisend = Console.ReadLine();
+                Console.Write("Sisesta inimese sugu (M/N): ");
+                string sugu = Console.ReadLine().ToUpper();
+
+                if (!int.TryParse(pikkus2Sisend, out int pikkus2) || pikkus2 <= 0)
+                {
+                    Console.WriteLine("Viga: pikkus peab olema positiivne täisarv.");
+                }
+                else
+                {
+                    if (sugu == "M")
+                    {
+                        if (pikkus2 < 160)
+                            Console.WriteLine("Mees on lühike.");
+                        else if (pikkus2 <= 190)
+                            Console.WriteLine("Mees on keskmise pikkusega.");
+                        else
+                            Console.WriteLine("Mees on pikk.");
+                    }
+                    else if (sugu == "N")
+                    {
+                        if (pikkus2 < 150)
+                            Console.WriteLine("Naine on lühike.");
+                        else if (pikkus2 <= 175)
+                            Console.WriteLine("Naine on keskmise pikkusega.");
+                        else
+                            Console.WriteLine("Naine on pikk.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Sugu sisestati valesti.");
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Viga: {e.Message}");
+            }
+
+            // ÜLESANNE 8
+            Console.WriteLine("=== ÜLESANNE 8 ===");
+            try
+            {
+                Console.WriteLine("Kas soovid osta piima? (jah/ei)");
+                string piim = Console.ReadLine().ToLower();
+                Console.WriteLine("Kas soovid osta saia? (jah/ei)");
+                string sai = Console.ReadLine().ToLower();
+                Console.WriteLine("Kas soovid osta leiba? (jah/ei)");
+                string leib = Console.ReadLine().ToLower();
+
+                double hindKokku = 0;
+                if (piim == "jah") hindKokku += 1.20;
+                if (sai == "jah") hindKokku += 0.80;
+                if (leib == "jah") hindKokku += 1.00;
+
+                Console.WriteLine($"Sinu ostukorvi hind kokku on: {hindKokku:F2} eurot.");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Viga: {e.Message}");
+            }
         }
     }
 }
