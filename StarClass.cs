@@ -1,5 +1,12 @@
+<<<<<<< HEAD
+﻿using osa3funktsioonid;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+=======
 ﻿using System;
 using System.Collections;
+>>>>>>> 69d6f596efe5f994d01161709d9e6c128a7577b2
 using System.Text;
 
 namespace c_1
@@ -8,6 +15,25 @@ namespace c_1
     {
         public static void Main(string[] args)
         {
+<<<<<<< HEAD
+
+            // Пример массива с 4 цифрами
+            int[] arvud = { 1, 5, 7, 7 };
+
+            // Вызов функции из файла Funktsioonid.cs
+            int suurimArv = Funktsioonid.SuurimNeljarv(arvud);
+
+            // Выводим результат
+            if (suurimArv == -1)
+                Console.WriteLine("Sisend on vigane!");
+            else
+                Console.WriteLine($"Suurim võimalik neljakohaline arv on: {suurimArv}");
+
+
+            Funktsioonid.KusiMarksona("elevant", "Osta elevant ära!");
+
+            Arvutaja.Arvumäng();
+=======
             Console.OutputEncoding = Encoding.UTF8;
 
             double[] arvud = AnalüüsiArve.teksti_arvud();
@@ -88,6 +114,7 @@ namespace c_1
             //                isik.Prindi();
             //                Console.WriteLine("Kolmandal kohal on", isikud[2], "isik");
             //            }
+>>>>>>> 69d6f596efe5f994d01161709d9e6c128a7577b2
 
 
 
@@ -95,6 +122,111 @@ namespace c_1
 
 
 
+<<<<<<< HEAD
+
+
+            //2. Osa - Valikud
+
+
+            //3. Имена и возрасты Задача: Создайте класс Человек { string Имя; int Возраст; }.
+            //Создайте метод Статистика(Список люди), который: вычисляет сумму всех возрастов и средний возраст,
+            //находит самого старшего и самого молодого человека, возвращает эти значения в Tuple.
+            //Пользователь вводит 5 человек (имя и возраст отдельно).
+
+
+            //    Console.OutputEncoding = Encoding.UTF8;
+
+            //    var inimesed = new List<string>();
+            //    var vanused = new List<int>();
+
+            //    // Сбор данных
+            //    for (int i = 0; i < 5; i++)
+            //    {
+            //        Console.Write($"{i + 1}. Sisesta nimi: ");
+            //        string nimi = Console.ReadLine();
+            //        inimesed.Add(nimi);
+
+            //        int vanus;
+            //        while (true)
+            //        {
+            //            Console.Write($"{i + 1}. Sisesta vanus: ");
+            //            if (int.TryParse(Console.ReadLine(), out vanus) && vanus >= 0)
+            //                break;
+            //            else
+            //                Console.WriteLine("Palun sisesta kehtiv positiivne number.");
+            //        }
+            //        vanused.Add(vanus);
+            //    }
+
+            //    // Вызов статистической функции
+            //    var (sum, avg, youngestPerson, oldestPerson, minAge, maxAge) = Statistika(inimesed, vanused);
+
+            //    // Вывод результатов
+            //    Console.WriteLine($"\nVanuste summa: {sum}");
+            //    Console.WriteLine($"Vanuste keskmine: {avg:F2}");
+            //    Console.WriteLine($"Kõige vanem inimene: {oldestPerson}, Vanus: {maxAge}");
+            //    Console.WriteLine($"Kõige noorem inimene: {youngestPerson}, Vanus: {minAge}");
+            //}
+
+            //static (int sum, double avg, string youngestPerson, string oldestPerson, int minAge, int maxAge)
+            //    Statistika(List<string> inimesed, List<int> vanused)
+            //{
+            //    int sum = 0;
+            //    int minAge = int.MaxValue;
+            //    int maxAge = int.MinValue;
+            //    string youngestPerson = null;
+            //    string oldestPerson = null;
+
+            //    for (int i = 0; i < vanused.Count; i++)
+            //    {
+            //        int age = vanused[i];
+            //        sum += age;
+
+            //        if (age < minAge)
+            //        {
+            //            minAge = age;
+            //            youngestPerson = inimesed[i];
+            //        }
+
+            //        if (age > maxAge)
+            //        {
+            //            maxAge = age;
+            //            oldestPerson = inimesed[i];
+            //        }
+            //    }
+
+            //    double avg = vanused.Count > 0 ? sum / (double)vanused.Count : 0;
+
+            //    return (sum, avg, youngestPerson, oldestPerson, minAge, maxAge);
+
+
+
+
+            //Console.OutputEncoding = Encoding.UTF8;
+            //Console.ForegroundColor = ConsoleColor.Green;
+
+            //Console.Write("Tere tulemast!, \nInput Text: ");
+            //string tekst = Console.ReadLine();
+            //Console.WriteLine($"{tekst}, Rõõm Näha");
+            //int a = 1000;
+            //char taht = 'A';
+            //Console.Write($"Esimene arv on {a}, Sisesta b = ... ");
+            //int b = int.Parse(Console.ReadLine());
+            //Console.WriteLine($"Summa = {a+b}");
+            //Console.WriteLine("Ujukomaarv");
+            //double d=double.Parse(Console.ReadLine());
+            //Console.WriteLine(d);
+            //float f=float.Parse(Console.ReadLine());
+            //Console.WriteLine(f);
+            //bool t = true;
+
+            //Random rnd = new Random();
+            //a = rnd.Next(-10, 10);
+            //Console.WriteLine(a);
+            //float vastus = funktsioonid.kalkulaator(f, a);
+            //Console.Write($"vastus: {vastus}");
+            Console.ReadKey();
+=======
             //// ÜLESANNE 1
             //Console.WriteLine("=== ÜLESANNE 1 ===");
             //try
@@ -331,6 +463,7 @@ namespace c_1
             //{
             //    Console.WriteLine($"Viga: {e.Message}");
             //}
+>>>>>>> 69d6f596efe5f994d01161709d9e6c128a7577b2
         }
     }
 }
